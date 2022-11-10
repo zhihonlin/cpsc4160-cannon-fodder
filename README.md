@@ -1,1 +1,1 @@
-# -cpsc4160-cannon-fodder
+# cpsc4160-cannon-fodder
