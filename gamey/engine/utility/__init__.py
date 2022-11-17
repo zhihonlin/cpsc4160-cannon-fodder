@@ -20,9 +20,6 @@ def make_timer():
 ###
 ### Actions
 ###
-def make_increment_action():
-    import gamey.engine.utility.action.counter_increment as incre
-    return incre.Increment()
 
 def make_start_timer_action():
     import gamey.engine.utility.action.start_timer as st

@@ -1,10 +1,10 @@
 import pygame
-class DrawBaiscButtonAction():
+class DrawRectButtonAction():
     def __init__(self):
         self.types = ["display"]
         self.entity_state = None
         self.verbose = False
-        self.name = "draw_basic_button_action"
+        self.name = "draw_rect_button_action"
         return
 
     def condition_to_act(self,data):

@@ -1,8 +1,8 @@
 #
 # Rectangular basic button
 #
-class Basic_Button:
-    def __init__(self, bounds=(0,0,10,20), color=(128, 128, 128), name="basic_button"):
+class Rectangle:
+    def __init__(self, bounds=(0,0,10,20), color=(128, 128, 128), name="rectangle"):
         self.bounds = bounds
         self.color = color # (r,g,b)
         #self.message = msg # Member variable for the message in a message button

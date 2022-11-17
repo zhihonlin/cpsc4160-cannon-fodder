@@ -1,16 +1,13 @@
 #
-# HUD UI Element
+# Rectangular basic button
 #
-class HUD:
-    def __init__(self, font="Comic Sans MS", font_size = 20, color=(128,128,128), name="hud", ):
-        self.font = font
-        self.font_size = font_size
-        self.color = color
-        self.pos = (20,20)
-        self.total_message = "Total: 1"
-        self.success_message = "Success: 0"
+class Circle:
+    def __init__(self, color=(128, 128, 128), center=(0,0), radius=20, name="circle"):
+        self.color = color # (r,g,b)
         #self.message = msg # Member variable for the message in a message button
         self.template = None # Member variable for the image template in a template button
+        self.center = center
+        self.radius = radius
         self.actions = []
         self.name = name
         self.verbose = False
