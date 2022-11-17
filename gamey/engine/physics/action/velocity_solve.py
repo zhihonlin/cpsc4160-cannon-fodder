@@ -1,5 +1,5 @@
-class PositionSolveAction:
-    def __init__(self, index):
+class VelocitySolveAction:
+    def __init__(self):
         self.types = ["physics"]
         self.dt = 1.0
         self.entity_state = None

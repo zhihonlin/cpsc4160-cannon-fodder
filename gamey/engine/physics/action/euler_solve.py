@@ -1,5 +1,5 @@
 class EulerSolveAction:
-    def __init__(self, index):
+    def __init__(self):
         self.types = ["physics"]
         self.dt = 1.0
         self.entity_state = None
@@ -21,8 +21,8 @@ class EulerSolveAction:
         if self.condition_to_act(data):
             self.children[0].dt = float(self.dt)
             self.children[1].dt = float(self.dt)
-            self.children[0].dt.act(data)
-            self.children[1].dt.act(data)
+            self.children[0].act(data)
+            self.children[1].act(data)
             # Handle collision via children
             for c in self.children[2:]:
                 c.act(data)

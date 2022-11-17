@@ -1,8 +1,7 @@
 # Puts the position passed to the action into the center location of the bounds of the entity
 class PutPositionAction:
-    def __init__(self, index):
+    def __init__(self):
         self.types = ["position"]
-        self.particle_index = index
         self.entity_state = None
         self.name = "put_position_action"
         self.verbose = False
@@ -13,17 +12,13 @@ class PutPositionAction:
             return False
         if self.entity_state.active == False:
             return False
-        if self.particle_index >= len(self.entity_state.position):
-            return False
-        if self.entity_state.active_particle[self.particle_index] == False:
-            return False
         if len(data) != 2:
             return False
         return True
 
     def act(self, data):
         if self.condition_to_act(data):
-            self.entity_state.position[self.index] = list(data)
+            self.entity_state.center = (data[0],data[1])
             for c in self.children:
                 c.act(data)
             if self.verbose:

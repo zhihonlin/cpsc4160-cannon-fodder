@@ -6,7 +6,7 @@ def make_rectangle( bounds, color ):
     result = rt.Rectangle(bounds,color)
     return result
 
-def make_circle(color, center, radius):
+def make_round(color, center, radius):
     import gamey.engine.actor.entity.circle as cr
     result = cr.Circle(color, center,radius)
     return result
@@ -22,3 +22,7 @@ def make_draw_rectangle_action():
 def make_draw_circle_action():
     import gamey.engine.actor.action.draw_circle as dc
     return dc.DrawCircleButtonAction()
+
+def make_put_position_action():
+    import gamey.engine.actor.action.put_position as ppos
+    return ppos.PutPositionAction()
