@@ -1,9 +1,9 @@
 ###
 ### Entities
 ###
-def make_rectangle( bounds, color ):
+def make_rectangle( length,width, color ):
     import gamey.engine.actor.entity.rectangle as rt
-    result = rt.Rectangle(bounds,color)
+    result = rt.Rectangle(length,width,color)
     return result
 
 def make_round(color, center, radius):

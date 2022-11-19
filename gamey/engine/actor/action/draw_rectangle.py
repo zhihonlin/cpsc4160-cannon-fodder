@@ -26,5 +26,5 @@ class DrawRectButtonAction():
     def draw(self, screen):
         if self.verbose:
             print("Currently drawing")
-        pygame.draw.rect(screen, self.entity_state.color, self.entity_state.bounds )
+        pygame.draw.rect(screen, self.entity_state.color, (self.entity_state.pos[0],self.entity_state.pos[1], self.entity_state.length,self.entity_state.width)  )
         return

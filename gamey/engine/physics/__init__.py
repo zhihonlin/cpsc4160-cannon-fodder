@@ -18,6 +18,11 @@ def make_spring_force():
     spring = sf.SpringForce()
     return spring
 
+def make_rectangle_collider(llc, urc):
+    import gamey.engine.physics.entity.rectangle_collider as rc
+    rectangle_collider = rc.RectangleCollider(llc, urc)
+    return rectangle_collider
+
 ###
 ### Actions
 ###
@@ -51,3 +56,13 @@ def make_pick_position(index):
     import gamey.engine.physics.action.pick_position as pp
     pick = pp.PickPositionAction(index)
     return pick
+
+def make_outside_rectangle_collision():
+    import gamey.engine.physics.action.outside_rectangle_collision as oco
+    outside_collision = oco.OutsideRectangleCollisionAction()
+    return outside_collision
+
+def make_inside_rectangle_collision():
+    import gamey.engine.physics.action.inside_rectangle_collision as ico
+    inside_collision = ico.InsideRectangleCollisionAction()
+    return inside_collision

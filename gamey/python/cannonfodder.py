@@ -39,10 +39,16 @@ def get_particles(init_data):
 
     for d in init_data:
       position = list(d.center)
-      velocity = [ (2.0*random.random() - 1.0), (2.0*random.random() - 1.0)]
+      velocity = [ (3.0*random.random() - 1.0), 3.0*(2.0*random.random() - 1.0)]
       mass = 1.0
       parts.add_particle(position,velocity,mass)
     
+    # Spring force
+    spring = ps.make_spring_force()
+    spring.spring_constant = 0.002
+    spring_action = ps.make_spring_action()
+    spring.insert_action(spring_action)
+
     # Simple gravity force
     gravity = ps.make_gravity_force()
     gravity.gravity = [0.0,0.5]
@@ -57,6 +63,7 @@ def get_particles(init_data):
     vsolve = ps.make_velocity_solve()
     parts.insert_action(vsolve)
     vsolve.children.append(grav_action)
+    vsolve.children.append(spring_action)
 
     # Euler Solve
     esolve = ps.make_euler_solve()
@@ -77,10 +84,28 @@ def get_particles(init_data):
 
       esolve.children.append(pick)
 
+    # Collision with the window frame
+    window_frame_collider = ps.make_rectangle_collider( [0,0], [1280, 720])
+    collisions = ps.make_inside_rectangle_collision()
+    window_frame_collider.insert_action(collisions)
+    psolve.children.append(collisions)
+
+    # Collision with the a rectangle in middle
+    box_collider = ps.make_rectangle_collider( [1280/2-200,720/2-200], [1280/2+200,720/2+200])
+    outside_collisions = ps.make_outside_rectangle_collision()
+    box_collider.insert_action(outside_collisions)
+    psolve.children.append(outside_collisions)
+
     return particles
 
-
-
+def get_boxes(nx,ny):
+    boxes = []
+    rect = at.make_rectangle(400,400,(255,255,255))
+    rect.pos = [1280/2-200, 720/2-200.0]
+    rect.insert_action(at.make_draw_rectangle_action())
+    boxes.append(rect)
+    return boxes
+    
 ################## Viewer #############################################
 viewer = pl.make_frame_viewer(1280, 720)
 
@@ -99,22 +124,12 @@ circles = get_circles(1280, 720, 100)
 
 particles = get_particles(circles)
 
-game_content = game_content + circles + particles
+boxes = get_boxes(1280, 720)
+
+game_content = game_content + circles + particles + boxes
   
 
 hanger_color = (255, 30, 30)
-
-
-# Generate random starting position
-random_start_x = random.randint(0, 1200)
-random_start_y = random.randint(0, 600)
-
-test_bound = (random_start_x, random_start_y, 150, 100)
-test = at.make_rectangle(test_bound, hanger_color)
-test.name = "testing"
-
-test.insert_action(at.make_draw_rectangle_action())
-game_content.append(test)
 
 
 ###
