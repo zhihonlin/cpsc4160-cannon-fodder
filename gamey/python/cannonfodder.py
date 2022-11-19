@@ -41,7 +41,7 @@ def get_particles(init_data, boxes, nx, ny):
 
     for d in init_data:
       position = list(d.center)
-      velocity = [ 20.0*(2.0*random.random() - 1.0), 3.0*(2.0*random.random() - 1.0)]
+      velocity = [ 10, 1]
       mass = 1
       parts.add_particle(position,velocity,mass)
     
@@ -53,13 +53,13 @@ def get_particles(init_data, boxes, nx, ny):
 
     # drag force
     drag = ps.make_drag_force()
-    drag.drag_constant = 0.02
+    drag.drag_constant = 0
     drag_action = ps.make_drag_action()
     drag.insert_action(drag_action)
 
     # Simple gravity force
     gravity = ps.make_gravity_force()
-    gravity.gravity = [0.0,0.5]
+    gravity.gravity = [0.0,0.05]
     grav_action = ps.make_gravity_action()
     gravity.insert_action(grav_action)
 
