@@ -6,12 +6,6 @@ def make_total_counter():
     result = tc.Total_Counter()
     return result
 
-
-def make_success_counter():
-    import gamey.engine.utility.entity.success_counter as sc
-    result = sc.Success_Counter()
-    return result
-
 def make_timer():
     import gamey.engine.utility.entity.timer as tm
     result = tm.Timer()
@@ -29,9 +23,9 @@ def make_update_timer_action():
     import gamey.engine.utility.action.update_timer as ut
     return ut.UpdateTimer()
 
-def make_alarm_action():
+def make_alarm_action(alarm_time):
     import gamey.engine.utility.action.alarm as al
-    return al.Alarm()
+    return al.Alarm(alarm_time)
 
 def make_activate_action():
     import gamey.engine.utility.action.activate_entity as ae

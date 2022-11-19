@@ -18,6 +18,11 @@ def make_spring_force():
     spring = sf.SpringForce()
     return spring
 
+def make_drag_force():
+    import gamey.engine.physics.entity.drag_force as df
+    drag = df.DragForce()
+    return drag
+
 def make_rectangle_collider(llc, urc):
     import gamey.engine.physics.entity.rectangle_collider as rc
     rectangle_collider = rc.RectangleCollider(llc, urc)
@@ -36,6 +41,12 @@ def make_spring_action():
     import gamey.engine.physics.action.spring_action as sa
     spring_action = sa.SpringForceAction()
     return spring_action
+
+def make_drag_action():
+    import gamey.engine.physics.action.drag_force_action as dfa
+    drag_action = dfa.DragForceAction()
+    return drag_action
+
 
 def make_euler_solve():
     import gamey.engine.physics.action.euler_solve as es

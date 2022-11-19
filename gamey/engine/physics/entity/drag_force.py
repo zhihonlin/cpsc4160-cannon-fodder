@@ -1,10 +1,10 @@
 #
-# Success counter of squares
+# Force entity
 #
-class Success_Counter:
-    def __init__(self,name="success_counter"):
-        self.count = 0
-        #self.message = msg # Member variable for the message in a message button
+class DragForce:
+    def __init__(self, name="drag_force"):
+        self.drag_constant = 0.1
+        # Default entity atrributes
         self.actions = []
         self.name = name
         self.verbose = False
