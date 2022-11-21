@@ -53,9 +53,7 @@ def get_particles(init_data, boxes, nx, ny):
 
     # drag force
     drag = ps.make_drag_force()
-    drag.drag_constant = 0
-    drag_action = ps.make_drag_action()
-    drag.insert_action(drag_action)
+    drag.drag_constant = 0.03
 
     # Simple gravity force
     gravity = ps.make_gravity_force()
@@ -72,7 +70,6 @@ def get_particles(init_data, boxes, nx, ny):
     parts.insert_action(vsolve)
     vsolve.children.append(grav_action)
     vsolve.children.append(spring_action)
-    vsolve.children.append(drag_action)
 
     # Euler Solve
     esolve = ps.make_euler_solve()
@@ -165,6 +162,31 @@ def get_particles(init_data, boxes, nx, ny):
     particles.append(timer)
     particles.append(timer2)
 
+    # Create rectangle at bottome
+    deact_rect = at.make_rectangle(nx-(nx/2+200),ny,(0,0,0))
+    deact_rect.fill = 1
+    deact_rect.pos = [nx/2+200, 0]
+    deact_rect.insert_action(at.make_draw_rectangle_action())
+    is_inside = at.make_inside_rectangle_action()
+    deact_rect.insert_action(is_inside)
+    vsolve.children.append(is_inside)
+
+    deact = ps.make_deactivate_action()
+    drag.insert_action(deact)
+    is_inside.children.append(deact)
+
+    particles.append(deact_rect)
+
+
+    ''' for count, b in enumerate(parts.acceleration):
+        deact = ps.make_deactivate_action(count)
+        drag.insert_action(deact)
+        vsolve.children.append(deact) '''
+
+    act_force =  ps.make_activate_action(0)
+    drag.insert_action(act_force)
+    vsolve.children.append(act_force)
+
     return particles
 
 def get_boxes(nx,ny):
@@ -176,13 +198,13 @@ def get_boxes(nx,ny):
     boxes.append(top_rect)
     
     # Create rectangle in middle
-    mid_rect = at.make_rectangle(100,ny/8,(122,255,255))
+    mid_rect = at.make_rectangle(100,ny/8,(255,255,255))
     mid_rect.pos = [nx/2+100, ny/3]
     mid_rect.insert_action(at.make_draw_rectangle_action())
     boxes.append(mid_rect)
 
     # Create rectangle at bottome
-    bot_rect = at.make_rectangle(100,ny-ny/8-ny/3,(122,122,122))
+    bot_rect = at.make_rectangle(100,ny-ny/8-ny/3,(255,255,255))
     bot_rect.pos = [nx/2+100, ny/3+ny/8]
     bot_rect.insert_action(at.make_draw_rectangle_action())
     boxes.append(bot_rect)
@@ -220,6 +242,8 @@ circles = get_circles(NX, NY, 100)
 boxes = get_boxes(NX, NY)
 
 particles = get_particles(circles,boxes,NX,NY)
+
+''' redraw_boxes = get_boxes(NX,NY) '''
 
 game_content = game_content + circles + particles + boxes
 

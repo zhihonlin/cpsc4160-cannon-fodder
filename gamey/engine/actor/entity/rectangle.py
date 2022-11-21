@@ -2,11 +2,12 @@
 # Rectangular basic button
 #
 class Rectangle:
-    def __init__(self, length, width, color=(128, 128, 128), name="rectangle"):
+    def __init__(self, length, width, color=(128, 128, 128), fill=0, name="rectangle"):
         self.length = length
         self.width = width
         self.color = color # (r,g,b)
         self.pos = [0,0]
+        self.fill = 0
         #self.message = msg # Member variable for the message in a message button
         self.template = None # Member variable for the image template in a template button
         self.actions = []

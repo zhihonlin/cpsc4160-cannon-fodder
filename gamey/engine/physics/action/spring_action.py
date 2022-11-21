@@ -22,7 +22,7 @@ class SpringForceAction:
             center_of_mass = [0.0, 0.0]
             # Get center of mass
             for i in range(0,len(data.acceleration)):
-              if data.active_particle[i]:
+              if data.active_particle[i] and data.active_force[i]:
                 total_mass = total_mass + data.mass[i]
                 center_of_mass[0] = center_of_mass[0] + data.mass[i] * data.position[i][0]
                 center_of_mass[1] = center_of_mass[1] + data.mass[i] * data.position[i][1] 
@@ -31,7 +31,7 @@ class SpringForceAction:
 
             # Force based on separation of each particle from center of mass
             for i in range(0,len(data.acceleration)):
-              if data.active_particle[i]:
+              if data.active_particle[i] and data.active_force[i]:
                 accel = [0.0, 0.0]
                 accel[0] = (center_of_mass[0] - data.position[i][0]) * self.entity_state.spring_constant / data.mass[i]
                 accel[1] = (center_of_mass[1] - data.position[i][1]) * self.entity_state.spring_constant / data.mass[i]

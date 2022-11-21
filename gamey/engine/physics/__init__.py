@@ -77,3 +77,13 @@ def make_inside_rectangle_collision():
     import gamey.engine.physics.action.inside_rectangle_collision as ico
     inside_collision = ico.InsideRectangleCollisionAction()
     return inside_collision
+
+def make_deactivate_action():
+    import gamey.engine.physics.action.deactivate as dea
+    deactivate = dea.Deactivate()
+    return deactivate
+
+def make_activate_action(index):
+    import gamey.engine.physics.action.activate as act
+    activate = act.Activate(index)
+    return activate

@@ -8,6 +8,7 @@ class Particle:
         self.acceleration = []
         self.mass = []
         self.active_particle = []
+        self.active_force = []
         # Default entity atrributes
         self.actions = []
         self.name = name
@@ -26,3 +27,4 @@ class Particle:
         self.acceleration.append([0.0, 0.0])
         self.mass.append(m)
         self.active_particle.append(True)
+        self.active_force.append(True)

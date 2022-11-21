@@ -26,3 +26,7 @@ def make_draw_circle_action():
 def make_put_position_action():
     import gamey.engine.actor.action.put_position as ppos
     return ppos.PutPositionAction()
+
+def make_inside_rectangle_action():
+    import gamey.engine.actor.action.is_inside as ii
+    return ii.InsideRectangleAction()
