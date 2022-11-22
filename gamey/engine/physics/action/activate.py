@@ -1,9 +1,8 @@
 from pygame.locals import * 
  
 class Activate: 
-    def __init__(self, particle_index): 
+    def __init__(self): 
         self.types = [""] 
-        self.particle_index = particle_index
         self.entity_state = None 
         self.name = "Aactivate_force_action" 
         self.children = [] 
@@ -16,10 +15,11 @@ class Activate:
             return False
         return True 
  
-    def act(self, data): 
+    def act(self, data, index): 
         if self.condition_to_act(data):
-            data.acceleration[self.particle_index][0] = data.acceleration[self.particle_index][0] - data.velocity[self.particle_index][0] * 0
-            data.acceleration[self.particle_index][1] = data.acceleration[self.particle_index][1] - data.velocity[self.particle_index][1] * 0
+            data.active_force[index] = True
+            data.acceleration[index][0] = data.acceleration[index][0] - data.velocity[index][0] * 0.0
+            data.acceleration[index][1] = data.acceleration[index][1] - data.velocity[index][1] * 0.0
             for c in self.children: 
                 c.act(data) 
             if self.verbose: 

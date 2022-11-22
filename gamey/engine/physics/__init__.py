@@ -83,7 +83,7 @@ def make_deactivate_action():
     deactivate = dea.Deactivate()
     return deactivate
 
-def make_activate_action(index):
+def make_activate_action():
     import gamey.engine.physics.action.activate as act
-    activate = act.Activate(index)
+    activate = act.Activate()
     return activate

@@ -177,16 +177,6 @@ def get_particles(init_data, boxes, nx, ny):
 
     particles.append(deact_rect)
 
-
-    ''' for count, b in enumerate(parts.acceleration):
-        deact = ps.make_deactivate_action(count)
-        drag.insert_action(deact)
-        vsolve.children.append(deact) '''
-
-    act_force =  ps.make_activate_action(0)
-    drag.insert_action(act_force)
-    vsolve.children.append(act_force)
-
     return particles
 
 def get_boxes(nx,ny):
@@ -242,8 +232,6 @@ circles = get_circles(NX, NY, 100)
 boxes = get_boxes(NX, NY)
 
 particles = get_particles(circles,boxes,NX,NY)
-
-''' redraw_boxes = get_boxes(NX,NY) '''
 
 game_content = game_content + circles + particles + boxes
 

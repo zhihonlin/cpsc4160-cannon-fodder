@@ -3,7 +3,7 @@ import time
 # Timer class
 #
 class Timer:
-    def __init__(self, name="basic_button"):
+    def __init__(self, name="timer"):
         self.start_time =  time.time()
         self.current_time = time.time() # (r,g,b)
         #self.message = msg # Member variable for the message in a message button
